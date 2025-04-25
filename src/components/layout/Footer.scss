@@ -1,0 +1,40 @@
+.footer {
+    background-color: #f7f7f7;
+    color: #111;
+    text-align: center;
+    padding: 2rem 0;
+    border-top: 1px solid #eee;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+
+    p {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+
+        li {
+            margin: 0 1rem;
+
+            a {
+                color: #111;
+                text-decoration: none;
+                font-weight: 600;
+
+                &:hover {
+                    color: #444;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .footer p {
+        font-size: 0.9rem; 
+    }
+}
