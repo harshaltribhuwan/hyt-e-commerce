@@ -8,7 +8,7 @@ export default function ProductGrid() {
     <div className="product-grid">
       <h2 className="title">Shop the Collection</h2>
       <div className="product-grid__items">
-        {products.slice(0, 10).map((product) => {
+        {products.slice(0, 20).map((product) => {
           const discountedPrice =
             product.price - (product.price * product.discount) / 100;
           return (

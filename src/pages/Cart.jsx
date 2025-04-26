@@ -40,8 +40,6 @@ const Cart = () => {
     return acc + discountedPrice * item.quantity; // Add to the total amount
   }, 0);
 
-  console.log("total count ", totalAmount);
-
   return (
     <div className="cart">
       <h1>Your Cart</h1>
@@ -60,7 +58,6 @@ const Cart = () => {
                     <div className="item-price-info">
                       {item.discountedPrice !== item.price ? (
                         <>
-                          {console.log(item)}
                           <span className="discounted-price">
                             ₹{item.discountedPrice}
                           </span>

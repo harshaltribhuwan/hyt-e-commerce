@@ -122,20 +122,21 @@
 }
 
 .cart-actions button {
-    padding: 12px 20px;
-    background-color: #333;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
+    padding: 0.8rem 2rem;
+    background: #111;
     color: #fff;
-    font-size: 1.1rem;
-    transition: background-color 0.3s ease;
-    flex-shrink: 0;
-    width: auto;
-}
+    font-weight: 600;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: background 0.3s ease;
+    width: fit-content;
 
-.cart-actions button:hover {
-    background-color: #333;
+    &:hover {
+        background: #333;
+    }
 }
 
 /* --- RESPONSIVE --- */
