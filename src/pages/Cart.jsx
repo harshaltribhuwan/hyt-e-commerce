@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { removeFromCart, clearCart, addToCart } from "../store/cartSlice";
 import { FiTrash2 } from "react-icons/fi";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion"; // 🚀 Add Framer Motion
 import "./Cart.scss";
 
 const Cart = () => {
@@ -36,8 +37,8 @@ const Cart = () => {
   };
 
   const totalAmount = cartItems.reduce((acc, item) => {
-    const discountedPrice = item.price - (item.price * item.discount) / 100; // Calculate the discounted price
-    return acc + discountedPrice * item.quantity; // Add to the total amount
+    const discountedPrice = item.price - (item.price * item.discount) / 100;
+    return acc + discountedPrice * item.quantity;
   }, 0);
 
   return (
@@ -50,7 +51,14 @@ const Cart = () => {
         <>
           <div className="cart-items">
             {cartItems.map((item) => (
-              <div className="cart-item" key={item.id}>
+              <motion.div
+                className="cart-item"
+                key={item.id}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
+              >
                 <Link to={`/product/${item.id}`} className="cart-item-link">
                   <img src={item.image} alt={item.name} />
                   <div className="item-details">
@@ -85,18 +93,23 @@ const Cart = () => {
                 >
                   <FiTrash2 size={20} />
                 </button>
-              </div>
+              </motion.div>
             ))}
           </div>
 
-          <div className="cart-actions">
+          <motion.div
+            className="cart-actions"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+          >
             <div className="total-amount">
               <h2>Total: ₹{totalAmount.toFixed(2)}</h2>
             </div>
             <button className="clear-btn" onClick={handleClearCart}>
               Clear Cart
             </button>
-          </div>
+          </motion.div>
         </>
       )}
     </div>

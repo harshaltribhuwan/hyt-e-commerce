@@ -1,12 +1,37 @@
+import { motion } from "framer-motion";
 import "./Contact.scss";
 
 export default function Contact() {
   return (
-    <div className="contact">
+    <motion.div
+      className="contact"
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+    >
       <div className="contact-content">
-        <h1>Contact Us</h1>
-        <p>For inquiries or customer support, reach out to us:</p>
-        <div className="contact-info">
+        <motion.h1
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
+          Contact Us
+        </motion.h1>
+
+        <motion.p
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+        >
+          For inquiries or customer support, reach out to us:
+        </motion.p>
+
+        <motion.div
+          className="contact-info"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+        >
           <p>
             <strong>Email:</strong> support@hytinc.com
           </p>
@@ -16,8 +41,8 @@ export default function Contact() {
           <p>
             <strong>Address:</strong> 123 Fashion St, Delhi, India
           </p>
-        </div>
+        </motion.div>
       </div>
-    </div>
+    </motion.div>
   );
 }
