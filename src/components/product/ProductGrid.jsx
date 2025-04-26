@@ -18,7 +18,7 @@ export default function ProductGrid() {
             <img src={product.image} alt={product.name} />
             <h3>{product.name}</h3>
             <p>{product.price} INR</p>
-            <Link to={`/product/${product.name}`} className="btn">
+            <Link to={`/product/${product.id}`} className="btn">
               View Details
             </Link>
           </motion.div>
