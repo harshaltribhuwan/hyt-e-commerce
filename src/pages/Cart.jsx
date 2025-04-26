@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { removeFromCart, clearCart, addToCart } from "../store/cartSlice"; // Import addToCart
+import { removeFromCart, clearCart, addToCart } from "../store/cartSlice";
+import { FiTrash2 } from "react-icons/fi";
+import { Link } from "react-router-dom"; // Import Link
 import "./Cart.scss";
 
 const Cart = () => {
@@ -42,13 +44,22 @@ const Cart = () => {
         <div className="cart-items">
           {cartItems.map((item) => (
             <div className="cart-item" key={item.id}>
-              <img src={item.image} alt={item.name} />
-              <div className="item-details">
-                <h3>{item.name}</h3>
-                <p>{item.price} INR</p>
-                <p>Quantity: {item.quantity}</p>
-              </div>
-              <button onClick={() => handleRemoveItem(item.id)}>Remove</button>
+              <Link to={`/product/${item.id}`} className="cart-item-link">
+                {" "}
+                {/* Link to product detail page */}
+                <img src={item.image} alt={item.name} />
+                <div className="item-details">
+                  <h3>{item.name}</h3>
+                  <p>{item.price} INR</p>
+                  <p>Quantity: {item.quantity}</p>
+                </div>
+              </Link>
+              <button
+                className="remove-btn"
+                onClick={() => handleRemoveItem(item.id)}
+              >
+                <FiTrash2 size={20} /> {/* Trash icon */}
+              </button>
             </div>
           ))}
         </div>
