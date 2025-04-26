@@ -107,7 +107,7 @@ const Cart = () => {
               <h2>Total: ₹{totalAmount.toFixed(2)}</h2>
             </div>
             <button className="clear-btn" onClick={handleClearCart}>
-              Clear Cart
+              <span>Clear Cart</span>
             </button>
           </motion.div>
         </>

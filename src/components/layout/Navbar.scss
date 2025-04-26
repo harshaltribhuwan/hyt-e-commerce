@@ -6,48 +6,101 @@
     font-family: 'Inter', sans-serif;
     background: #ffffff;
     border-bottom: 1px solid #eee;
-    position: relative; // Add
-    z-index: 10; // Add
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(10px); // luxury glass effect
+    transition: all 0.3s ease;
 
     &__logo a {
         font-family: 'Unica One', sans-serif;
-        font-size: 1.5rem;
+        font-size: 1.8rem;
         font-weight: bold;
         text-transform: uppercase;
-        letter-spacing: 1px;
+        letter-spacing: 2px;
         text-decoration: none;
         color: #000;
+        transition: color 0.3s ease;
+
+        &:hover {
+            color: #555; // soft hover
+        }
     }
 
     &__links {
         display: flex;
-        gap: 2rem;
+        gap: 2.5rem;
+        align-items: center;
 
         a {
             text-decoration: none;
             color: #111;
             font-weight: 500;
-            transition: color 0.2s ease;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            position: relative;
+            transition: all 0.3s ease;
 
             &:hover {
-                color: #777;
+                color: #555;
+            }
+
+            // underline effect on hover
+            &::after {
+                content: "";
+                position: absolute;
+                bottom: -4px;
+                left: 0;
+                width: 0%;
+                height: 2px;
+                background-color: #111;
+                transition: width 0.3s ease;
+            }
+
+            &:hover::after {
+                width: 100%;
+            }
+        }
+
+        .cart-icon {
+            position: relative;
+            display: flex;
+            align-items: center;
+
+            .cart-count {
+                background: #000;
+                color: #fff;
+                font-size: 0.7rem;
+                padding: 2px 6px;
+                border-radius: 50%;
+                position: absolute;
+                top: -8px;
+                right: -10px;
             }
         }
 
         @media (max-width: 768px) {
             position: absolute;
-            top: 64px;
+            top: 0;
             left: 0;
             right: 0;
             background: #fff;
             flex-direction: column;
-            gap: 1.2rem;
-            padding: 1rem 2rem;
+            align-items: flex-start;
+            padding: 2rem;
+            gap: 2rem;
+            height: auto; // Don't stretch to full height
             display: none;
-            z-index: 20; // Add for extra safety for mobile dropdown
+            z-index: 20;
 
             &.open {
+                height: 92vh;
                 display: flex;
+                margin-top: 64px; // Add margin to push the menu down below the navbar
+            }
+
+            a {
+                font-size: 1.2rem; // Slightly bigger text for mobile view
             }
         }
     }
@@ -57,11 +110,14 @@
         flex-direction: column;
         gap: 5px;
         cursor: pointer;
+        transition: transform 0.3s ease;
 
         .bar {
-            width: 25px;
+            width: 28px;
             height: 2px;
             background: #111;
+            transition: all 0.3s ease;
+            border-radius: 1px;
         }
 
         @media (max-width: 768px) {

@@ -1,7 +1,6 @@
 .hero {
     position: relative;
-    height: 91dvh;
-    // background-image: url('https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+    height: 91dvh; // Adjusted for dynamic viewport height
     background-image: url('https://images.unsplash.com/photo-1562135291-7728cc647783?q=80&w=2960&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
     background-size: cover;
     background-position: center;
@@ -32,6 +31,7 @@
             letter-spacing: 3px;
             margin-bottom: 1.2rem;
             color: #fff;
+            word-wrap: break-word; // Ensure text wraps in small screens
         }
 
         p {
@@ -56,6 +56,57 @@
             &:hover {
                 background-color: #444;
             }
+        }
+    }
+}
+
+// Media query for smaller screens
+@media (max-width: 768px) {
+    .hero {
+        height: 92dvh; // Adjust height for smaller screens
+    }
+
+    .hero__content {
+        padding: 1.5rem; // Add some padding for better spacing
+
+        h1 {
+            font-size: 2.5rem; // Reduce font size on smaller screens
+            letter-spacing: 2px; // Adjust letter spacing for readability
+            margin-bottom: 0.8rem; // Adjust margin for a balanced layout
+        }
+
+        p {
+            font-size: 1.2rem; // Reduce paragraph font size
+            margin-bottom: 1.5rem; // Adjust margin
+        }
+
+        .btn {
+            padding: 0.8rem 1.5rem; // Make the button smaller on mobile
+            font-size: 1rem; // Adjust font size for button
+        }
+    }
+}
+
+// Media query for extra small screens (below 480px)
+@media (max-width: 480px) {
+    .hero {
+        height: 92dvh; // Adjust height further for very small screens
+    }
+
+    .hero__content {
+        h1 {
+            font-size: 2rem; // Further reduce font size on extra small screens
+            margin-bottom: 0.6rem; // Adjust margin for even smaller screens
+        }
+
+        p {
+            font-size: 1rem; // Reduce paragraph font size even more
+            margin-bottom: 1rem; // Adjust margin for extra small screens
+        }
+
+        .btn {
+            padding: 0.6rem 1.2rem; // Make button smaller for extra small screens
+            font-size: 0.9rem; // Smaller font size for button
         }
     }
 }
