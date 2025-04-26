@@ -1,0 +1,19 @@
+/* src/index.css or src/App.scss */
+
+html,
+body,
+#root {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.app-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.app-container>*:nth-last-child(2) {
+    flex: 1;
+}

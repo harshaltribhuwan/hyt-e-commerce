@@ -8,21 +8,41 @@ export default function ProductGrid() {
     <div className="product-grid">
       <h2 className="title">Shop the Collection</h2>
       <div className="product-grid__items">
-        {products.slice(0, 10).map((product) => (
-          <motion.div
-            key={product.name}
-            className="product-card"
-            whileHover={{ scale: 1.05 }}
-            transition={{ duration: 0.3 }}
-          >
-            <img src={product.image} alt={product.name} />
-            <h3>{product.name}</h3>
-            <p>{product.price} INR</p>
-            <Link to={`/product/${product.id}`} className="btn">
-              View Details
+        {products.slice(0, 10).map((product) => {
+          const discountedPrice =
+            product.price - (product.price * product.discount) / 100;
+          return (
+            <Link
+              to={`/product/${product.id}`}
+              key={product.name}
+              className="product-card-link" // Add a custom class to apply styles
+            >
+              <motion.div
+                className="product-card"
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.3 }}
+              >
+                <img src={product.image} alt={product.name} />
+                <h3>{product.name}</h3>
+                <div className="item-price-info">
+                  {product.discount > 0 ? (
+                    <>
+                      <span className="discounted-price">
+                        ₹{discountedPrice}
+                      </span>
+                      <span className="original-price">₹{product.price}</span>
+                      <span className="discount-percent">
+                        ({product.discount}% off)
+                      </span>
+                    </>
+                  ) : (
+                    <span className="discounted-price">₹{product.price}</span>
+                  )}
+                </div>
+              </motion.div>
             </Link>
-          </motion.div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );
