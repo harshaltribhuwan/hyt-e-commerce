@@ -9,7 +9,7 @@ import "./assets/scss/main.scss";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <Provider store={store}>
-    <BrowserRouter>
+    <BrowserRouter basename="/hyt-e-commerce">
       <App />
     </BrowserRouter>
   </Provider>
