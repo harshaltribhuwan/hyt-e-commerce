@@ -1,9 +1,16 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 import "./Navbar.scss";
+import { FiShoppingCart } from "react-icons/fi";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const cartItems = useSelector((state) => state.cart.items);
+  const stateD = useSelector((state) => state.cart);
+
+
+  console.log("Cart Items in Navbar:", stateD);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -29,8 +36,14 @@ export default function Navbar() {
         <Link to="/contact" onClick={() => setIsOpen(false)}>
           Contact
         </Link>
-        <Link to="/cart" onClick={() => setIsOpen(false)}>
+        {/* <Link to="/cart" onClick={() => setIsOpen(false)}>
           Cart
+        </Link> */}
+        <Link to="/cart" onClick={() => setIsOpen(false)} className="cart-icon">
+          <FiShoppingCart size={24} />
+          {cartItems?.length > 0 && (
+            <span className="cart-count">{cartItems?.length}</span>
+          )}
         </Link>
       </div>
 

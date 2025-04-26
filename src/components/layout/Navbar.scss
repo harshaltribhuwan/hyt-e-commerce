@@ -67,4 +67,33 @@
             /* Show hamburger on mobile */
         }
     }
+
+}
+
+.cart-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+    color: #000;
+    text-decoration: none;
+
+    svg {
+        margin-right: 0.5rem;
+    }
+
+    .cart-count {
+        position: absolute;
+        top: -8px;
+        right: -10px;
+        background: #ff4d4d;
+        color: white;
+        font-size: 0.7rem;
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+    }
 }
