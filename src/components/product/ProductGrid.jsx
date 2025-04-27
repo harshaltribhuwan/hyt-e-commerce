@@ -9,21 +9,24 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.15,
-      delayChildren: 0.2,
+      staggerChildren: 0.08, // faster stagger between cards (was 0.15)
+      delayChildren: 0.1, // less delay before children animate (was 0.2)
+      ease: "easeOut",
     },
   },
 };
 
 const cardVariants = {
-  hidden: { opacity: 0, y: 50, scale: 0.95 },
+  hidden: { opacity: 0, y: 30, scale: 0.95 }, // slightly smaller Y movement
   visible: {
     opacity: 1,
     y: 0,
     scale: 1,
-    transition: { type: "spring", stiffness: 120, damping: 15 },
+    transition: { type: "spring", stiffness: 200, damping: 20 },
+    // springier, quicker
   },
 };
+
 
 export default function ProductGrid() {
   const [sortOrder, setSortOrder] = useState(null); // Start with null (no sort)
@@ -109,6 +112,7 @@ export default function ProductGrid() {
       {filteredProducts.length > 0 && (
         <motion.div
           className="product-grid__items"
+          key={searchQuery + sortOrder} // key added here to re-trigger animation
           variants={containerVariants}
           initial="hidden"
           animate="visible"

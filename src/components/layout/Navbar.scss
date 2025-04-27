@@ -80,27 +80,31 @@
         }
 
         @media (max-width: 768px) {
-            position: absolute;
-            top: 0;
+            position: fixed;
+            top: 64px; // Start AFTER navbar height
             left: 0;
             right: 0;
             background: #fff;
             flex-direction: column;
-            align-items: flex-start;
-            padding: 2rem;
-            gap: 2rem;
-            height: auto; // Don't stretch to full height
-            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem 1rem;
+            gap: 3rem;
+            height: calc(100vh - 64px); // Reduce height by navbar height
+            opacity: 0;
+            visibility: hidden;
             z-index: 20;
+            transition: opacity 0.3s ease,
+                visibility 0s linear 0.3s; // Add transition for opacity and visibility
 
             &.open {
-                height: 92vh;
-                display: flex;
-                margin-top: 64px; // Add margin to push the menu down below the navbar
+                opacity: 1;
+                visibility: visible;
+                transition: opacity 0.3s ease, visibility 0s linear 0s; // Show and smooth opacity transition
             }
 
             a {
-                font-size: 1.2rem; // Slightly bigger text for mobile view
+                font-size: 1.4rem;
             }
         }
     }

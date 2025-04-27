@@ -33,7 +33,7 @@
                 width: 100%;
                 padding-left: 35px; // To leave space for the search icon
                 border: 1px solid #ddd;
-                border-radius: 4px;
+                border-radius: 8px;
                 outline: none;
 
                 &::placeholder {
@@ -48,7 +48,7 @@
                 right: 0;
                 background-color: white;
                 border: 1px solid #ddd;
-                border-radius: 4px;
+                border-radius: 8px;
                 max-height: 200px;
                 overflow-y: auto;
                 z-index: 10;
@@ -78,7 +78,7 @@
                 align-items: center;
                 padding: 0.8rem 1.2rem;
                 border: 1px solid #ddd;
-                border-radius: 4px;
+                border-radius: 8px;
                 background-color: #fff;
                 font-size: 1rem;
 
@@ -94,7 +94,7 @@
                 right: 0;
                 background-color: #fff;
                 border: 1px solid #ddd;
-                border-radius: 4px;
+                border-radius: 8px;
                 z-index: 10;
                 margin-top: 5px;
 
@@ -207,7 +207,6 @@
         .search-input-container {
             width: 100%;
             max-width: 100%;
-            padding-left: 20px; // Adjusted for mobile
 
             .search-icon {
                 left: 15px; // Adjusted for mobile to not overlap the input
