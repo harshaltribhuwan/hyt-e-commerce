@@ -1,22 +1,36 @@
 .cart {
-    padding: 20px;
+    padding: 40px 20px;
     max-width: 1200px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 30px;
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    /* Ensure cart takes full height to prevent navbar shifting */
 }
 
-.cart h1 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-    color: #333;
+.cart-title {
+    font-size: 2.8rem;
+    color: #111;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.empty-cart {
+    font-size: 1.4rem;
+    color: #888;
+    text-align: center;
+    margin-top: 20px;
+    min-height: 200px;
+    /* Ensure it has a consistent height, preventing layout shifts */
 }
 
 .cart-items {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 30px;
 }
 
 .cart-item {
@@ -24,17 +38,17 @@
     align-items: center;
     gap: 20px;
     padding: 20px;
-    border: 1px solid #ddd;
+    border: 1px solid #eee;
     border-radius: 12px;
     background-color: #fff;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     width: 100%;
 }
 
 .cart-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    transform: translateY(-8px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
 
 .cart-item-link {
@@ -51,46 +65,50 @@
     height: 120px;
     object-fit: cover;
     border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.cart-item-link img:hover {
+    transform: scale(1.1);
 }
 
 .item-details {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 12px;
 }
 
 .item-details h3 {
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     color: #333;
 }
 
 .item-details p {
-    font-size: 1rem;
+    font-size: 1.1rem;
     color: #555;
 }
 
 .item-price-info {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 15px;
 }
 
 .discounted-price {
-    font-size: 1.2rem;
-    font-weight: bold;
+    font-size: 1.4rem;
+    font-weight: 600;
     color: #333;
 }
 
 .original-price {
-    font-size: 1rem;
+    font-size: 1.2rem;
     color: #888;
     text-decoration: line-through;
 }
 
 .discount-percent {
-    font-size: 1rem;
+    font-size: 1.1rem;
     color: #888;
-    font-weight: 600;
 }
 
 .remove-btn {
@@ -100,10 +118,10 @@
     cursor: pointer;
     font-size: 24px;
     transition: color 0.2s ease;
-}
 
-.remove-btn:hover {
-    color: #888;
+    &:hover {
+        color: #d9534f;
+    }
 }
 
 .cart-actions {
@@ -112,7 +130,7 @@
     align-items: center;
     flex-wrap: wrap;
     gap: 20px;
-    margin-top: 20px;
+    margin-top: 30px;
 }
 
 .cart-actions .total-amount h2 {
@@ -122,7 +140,7 @@
 }
 
 .cart-actions button {
-    padding: 0.8rem 2rem;
+    padding: 1rem 2.5rem;
     background: #111;
     color: #fff;
     font-weight: 600;
@@ -162,7 +180,7 @@
     }
 }
 
-/* --- RESPONSIVE --- */
+/* Responsive styles */
 @media (max-width: 768px) {
     .cart-item {
         flex-direction: column;
@@ -196,22 +214,5 @@
     .cart-actions button {
         width: 100%;
         font-size: 1rem;
-    }
-}
-
-@media (min-width: 769px) {
-    .cart {
-        flex-direction: column;
-    }
-
-    .cart-actions {
-        flex-direction: row;
-        justify-content: flex-start;
-        gap: 20px;
-    }
-
-    .cart-actions .total-amount {
-        flex-grow: 1;
-        text-align: left;
     }
 }

@@ -3,21 +3,19 @@ import { useSelector, useDispatch } from "react-redux";
 import { removeFromCart, clearCart, addToCart } from "../store/cartSlice";
 import { FiTrash2 } from "react-icons/fi";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion"; // 🚀 Add Framer Motion
+import { motion } from "framer-motion";
 import "./Cart.scss";
 
 const Cart = () => {
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.items);
 
-  // Save cart to localStorage
   useEffect(() => {
     if (cartItems.length > 0) {
       localStorage.setItem("cart", JSON.stringify(cartItems));
     }
   }, [cartItems]);
 
-  // Load cart from localStorage
   useEffect(() => {
     const savedCart = JSON.parse(localStorage.getItem("cart"));
     if (savedCart) {
@@ -28,7 +26,12 @@ const Cart = () => {
   }, [dispatch]);
 
   const handleRemoveItem = (id) => {
+    // Remove item from Redux store
     dispatch(removeFromCart(id));
+
+    // Remove item from localStorage
+    const updatedCart = cartItems.filter((item) => item.id !== id);
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
   };
 
   const handleClearCart = () => {
@@ -43,10 +46,24 @@ const Cart = () => {
 
   return (
     <div className="cart">
-      <h1>Your Cart</h1>
+      <motion.h1
+        className="cart-title"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4 }}
+      >
+        Your Cart
+      </motion.h1>
 
       {cartItems.length === 0 ? (
-        <p>Your cart is empty</p>
+        <motion.p
+          className="empty-cart"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.4 }}
+        >
+          Your cart is empty
+        </motion.p>
       ) : (
         <>
           <div className="cart-items">
@@ -56,15 +73,15 @@ const Cart = () => {
                 key={item.id}
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.4, ease: "easeOut" }}
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
               >
                 <Link to={`/product/${item.id}`} className="cart-item-link">
                   <img src={item.image} alt={item.name} />
                   <div className="item-details">
                     <h3>{item.name}</h3>
                     <div className="item-price-info">
-                      {item.discountedPrice !== item.price ? (
+                      {item.discount > 0 ? (
                         <>
                           <span className="discounted-price">
                             ₹{item.discountedPrice}
@@ -106,9 +123,21 @@ const Cart = () => {
             <div className="total-amount">
               <h2>Total: ₹{totalAmount.toFixed(2)}</h2>
             </div>
-            <button className="clear-btn" onClick={handleClearCart}>
+            <motion.button
+              className="clear-btn"
+              onClick={handleClearCart}
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.3 }}
+            >
               <span>Clear Cart</span>
-            </button>
+            </motion.button>
+            <motion.button
+              className="checkout-btn"
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.3 }}
+            >
+              <span>Proceed to Checkout</span>
+            </motion.button>
           </motion.div>
         </>
       )}

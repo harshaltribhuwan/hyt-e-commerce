@@ -33,8 +33,15 @@
     }
 }
 
+/* Optional: For better visual clarity, you can give a minimum height to the footer */
+.footer {
+    min-height: 80px;
+    /* Or adjust as needed */
+}
+
+/* Responsive adjustments for smaller screens */
 @media (max-width: 768px) {
     .footer p {
-        font-size: 0.9rem; 
+        font-size: 0.9rem;
     }
 }

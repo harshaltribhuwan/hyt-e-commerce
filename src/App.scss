@@ -1,5 +1,4 @@
-/* src/index.css or src/App.scss */
-
+/* Ensure the footer is always at the bottom */
 html,
 body,
 #root {
@@ -9,11 +8,11 @@ body,
 }
 
 .app-container {
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
+    min-height: 100vh;
 }
 
-.app-container>*:nth-last-child(2) {
+.app-container>*:not(:last-child) {
     flex: 1;
 }
