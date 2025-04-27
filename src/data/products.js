@@ -3,7 +3,7 @@ export const products = [
     {
         id: 1,
         discount: 10, // 10% off
-        stock: 15,
+        stock: 4,
         sizes: ["S", "M", "L", "XL"],
         description: "A cool, casual shirt perfect for summer days.",
         name: "Cool Shirt",

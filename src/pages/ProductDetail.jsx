@@ -26,7 +26,14 @@ export default function ProductDetail() {
       alert("Please select a size.");
       return;
     }
-    dispatch(addToCart({ ...product, selectedSize, quantity }));
+
+    const newCartItem = { ...product, selectedSize, quantity };
+
+    dispatch(addToCart(newCartItem));
+
+    const existingCart = JSON.parse(localStorage.getItem("cart")) || [];
+    const updatedCart = [...existingCart, newCartItem];
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
   };
 
   return (
@@ -62,8 +69,14 @@ export default function ProductDetail() {
             {product.sizes.map((size) => (
               <button
                 key={size}
-                className={`size-btn ${selectedSize === size ? "active" : ""}`}
+                className="size-btn"
                 onClick={() => setSelectedSize(size)}
+                style={{
+                  backgroundColor: selectedSize === size ? "#111" : "#fff",
+                  color: selectedSize === size ? "#fff" : "#000",
+                  borderColor: selectedSize === size ? "#111" : "#ccc",
+                  transition: "all 0.3s ease",
+                }}
               >
                 {size}
               </button>
