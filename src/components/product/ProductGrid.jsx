@@ -26,7 +26,7 @@ const cardVariants = {
 };
 
 export default function ProductGrid() {
-  const [sortOrder, setSortOrder] = useState("lowToHigh");
+  const [sortOrder, setSortOrder] = useState(null); // Start with null (no sort)
   const [searchQuery, setSearchQuery] = useState("");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
@@ -49,16 +49,13 @@ export default function ProductGrid() {
       } else if (sortOrder === "highToLow") {
         return b.price - a.price;
       }
-      return 0;
+      return 0; // No sorting if sortOrder is null
     });
 
   return (
     <div className="product-grid">
-      <h2 className="title">Shop the Collection</h2>
 
-      {/* Filter Section */}
       <div className="filter-section">
-        {/* Search Input with Icon */}
         <div className="search-input-container">
           <i className="fas fa-search search-icon"></i>
           <input
@@ -70,7 +67,6 @@ export default function ProductGrid() {
           />
         </div>
 
-        {/* Custom Sort Dropdown with Icons */}
         <div className="sort-dropdown-container">
           <div
             className="sort-dropdown-selected"
@@ -79,8 +75,10 @@ export default function ProductGrid() {
             <span>
               {sortOrder === "lowToHigh" ? (
                 <>Low to High Price</>
-              ) : (
+              ) : sortOrder === "highToLow" ? (
                 <>High to Low Price</>
+              ) : (
+                <>Sort by Price</> // Default text when no sort is selected
               )}
             </span>
             <i className={`fas fa-chevron-${isDropdownOpen ? "up" : "down"}`} />
@@ -105,12 +103,10 @@ export default function ProductGrid() {
         </div>
       </div>
 
-      {/* No results found message */}
       {filteredProducts.length === 0 && searchQuery && (
         <p className="no-results-message">No results found</p>
       )}
 
-      {/* Product Items */}
       {filteredProducts.length > 0 && (
         <motion.div
           className="product-grid__items"
