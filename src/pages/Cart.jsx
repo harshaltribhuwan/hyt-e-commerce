@@ -10,11 +10,12 @@ const Cart = () => {
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.items);
 
+  // Load cart data from localStorage and update Redux store if needed
   useEffect(() => {
     const savedCart = JSON.parse(localStorage.getItem("cart"));
     if (savedCart) {
+      // Check if any cart item is missing from Redux store
       savedCart.forEach((item) => {
-        // Check if item already exists in Redux store
         const itemExists = cartItems.some(
           (cartItem) => cartItem.id === item.id
         );
@@ -23,17 +24,19 @@ const Cart = () => {
         }
       });
     }
-  }, [dispatch, cartItems]); // Added cartItems to the dependency array
+  }, [dispatch, cartItems]); // Ensure it only runs when dispatch and cartItems are available
 
+  // Sync cart items with localStorage when cart state changes
   useEffect(() => {
     if (cartItems.length > 0) {
       localStorage.setItem("cart", JSON.stringify(cartItems));
     }
-  }, [cartItems]); // Sync localStorage with Redux state
+  }, [cartItems]); // Sync Redux state with localStorage on changes
 
   const handleRemoveItem = (id) => {
     dispatch(removeFromCart(id));
 
+    // Remove item from localStorage
     const updatedCart = cartItems.filter((item) => item.id !== id);
     localStorage.setItem("cart", JSON.stringify(updatedCart));
   };

@@ -1,13 +1,18 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import "./Navbar.scss";
 import { FiShoppingCart } from "react-icons/fi";
-import { motion } from "framer-motion"; // Import Framer Motion
+import { motion } from "framer-motion";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+
+  // Get cartItems from Redux state
   const cartItems = useSelector((state) => state.cart.items);
+
+  // Cart count derived directly from Redux state
+  const cartCount = cartItems.length;
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -34,35 +39,32 @@ export default function Navbar() {
         </Link>
         <Link to="/cart" onClick={() => setIsOpen(false)} className="cart-icon">
           <FiShoppingCart size={24} />
-          {cartItems?.length > 0 && (
-            <span className="cart-count">{cartItems?.length}</span>
-          )}
+          {cartCount > 0 && <span className="cart-count">{cartCount}</span>}
         </Link>
       </div>
 
       <motion.div
         className="navbar__toggle"
         onClick={toggleMenu}
-        animate={{ rotate: isOpen ? 180 : 0 }} // Rotate the toggle icon when menu is open
+        animate={{ rotate: isOpen ? 180 : 0 }}
         transition={{ duration: 0.3 }}
       >
-        {/* Use Framer Motion's animate for smooth transitions */}
         <motion.div
           className="bar"
           initial={{ rotate: 0 }}
-          animate={{ rotate: isOpen ? 45 : 0, translateY: isOpen ? 7 : 0 }} // First bar rotation
+          animate={{ rotate: isOpen ? 45 : 0, translateY: isOpen ? 7 : 0 }}
           transition={{ duration: 0.3 }}
         ></motion.div>
         <motion.div
           className="bar"
           initial={{ opacity: 1 }}
-          animate={{ opacity: isOpen ? 0 : 1 }} // Hide the middle bar when the menu is open
+          animate={{ opacity: isOpen ? 0 : 1 }}
           transition={{ duration: 0.3 }}
         ></motion.div>
         <motion.div
           className="bar"
           initial={{ rotate: 0 }}
-          animate={{ rotate: isOpen ? -45 : 0, translateY: isOpen ? -7 : 0 }} // Third bar rotation
+          animate={{ rotate: isOpen ? -45 : 0, translateY: isOpen ? -7 : 0 }}
           transition={{ duration: 0.3 }}
         ></motion.div>
       </motion.div>
