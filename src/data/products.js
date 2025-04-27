@@ -6,7 +6,7 @@ export const products = [
         stock: 4,
         sizes: ["S", "M", "L", "XL"],
         description: "A cool, casual shirt perfect for summer days.",
-        name: "Cool Shirt",
+        name: "Midnight Vibes Tee",
         price: 3400,
         image:
             "https://images.unsplash.com/photo-1618354691229-88d47f285158?q=80&w=2231&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -17,7 +17,7 @@ export const products = [
         stock: 5,
         sizes: ["S", "M", ],
         description: "Funky look, funky shirt perfect for summer days.",
-        name: "Funky Shirt",
+        name: "Shadow Script T-Shirt",
         price: 5400,
         image:
             "https://images.unsplash.com/photo-1618354691373-d851c5c3a990?q=80&w=2367&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -28,7 +28,7 @@ export const products = [
         stock: 25,
         sizes: ["S", "M", "L"],
         description: "A luxury shirt, luxury shirt perfect for cool parties.",
-        name: "Luxury T-Shirt",
+        name: "Blackout Classic Tee",
         price: 2999,
         image:
             "https://images.unsplash.com/photo-1618354691321-e851c56960d1?q=80&w=1988&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -39,7 +39,7 @@ export const products = [
         stock: 15,
         sizes: ["S"],
         description: "A stylish shirt, stylist shirt perfect for dinner.",
-        name: "Stylish Hoodie",
+        name: "Dark Knight Graphic",
         price: 4999,
         image:
             "https://images.unsplash.com/photo-1618354691438-25bc04584c23?q=80&w=2028&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -50,7 +50,7 @@ export const products = [
         stock: 33,
         sizes: ["S", "M", "L", "XL"],
         description: "A cool, casual shirt perfect for summer days.",
-        name: "Classic Jacket",
+        name: "Stealth Print Tee",
         price: 7999,
         image:
             "https://images.unsplash.com/photo-1618354691551-44de113f0164?q=80&w=2586&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -61,7 +61,7 @@ export const products = [
         stock: 16,
         sizes: ["S", "M", "L", "XL"],
         description: "A cool, modern shirts perfect for summer days.",
-        name: "Modern shirts",
+        name: "Noir Minimalist Tee",
         price: 2200,
         image:
             "https://images.unsplash.com/photo-1618354691438-25bc04584c23?q=80&w=2028&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -72,7 +72,7 @@ export const products = [
         stock: 65,
         sizes: ["S", "L", "XL"],
         description: "A long cozy shirt, long shirt perfect for cozy days.",
-        name: "Long Shirt",
+        name: "Urban Echo Black Tee",
         price: 3300,
         image:
             "https://images.unsplash.com/photo-1618354691551-44de113f0164?q=80&w=2586&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -83,7 +83,7 @@ export const products = [
         stock: 25,
         sizes: ["S", "M", "XL"],
         description: "A dope shirt, dope shirt perfect for winter days.",
-        name: "Dope T-Shirt ",
+        name: "Phantom Emblem tee",
         price: 5400,
         image:
             "https://images.unsplash.com/photo-1618354691229-88d47f285158?q=80&w=2231&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -94,7 +94,7 @@ export const products = [
         stock: 5,
         sizes: ["S", "M", ],
         description: "A cool, funky shirt perfect for summer days.",
-        name: "Funky Hoodie",
+        name: "Eclipse Line Tee",
         price: 6999,
         image:
             "https://images.unsplash.com/photo-1618354691373-d851c5c3a990?q=80&w=2367&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -105,7 +105,7 @@ export const products = [
         stock: 15,
         sizes: ["L", "XL"],
         description: "A baggy shirt, baggy shirt perfect for rainy days.",
-        name: "Baggy shirts",
+        name: "Obsidian Graphic tee",
         price: 1200,
         image:
             "https://images.unsplash.com/photo-1618354691321-e851c56960d1?q=80&w=1988&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
