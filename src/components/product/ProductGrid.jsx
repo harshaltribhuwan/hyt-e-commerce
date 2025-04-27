@@ -1,9 +1,9 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { products } from "../../data/products"; // Import mock product data
+import { products } from "../../data/products";
 import "./ProductGrid.scss";
 
-// Animation variants
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
@@ -26,18 +26,96 @@ const cardVariants = {
 };
 
 export default function ProductGrid() {
+  const [sortOrder, setSortOrder] = useState("lowToHigh");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  const handleSortChange = (order) => {
+    setSortOrder(order);
+    setIsDropdownOpen(false); // Close the dropdown after selection
+  };
+
+  const handleSearchChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
+
+  const filteredProducts = products
+    .filter((product) =>
+      product.name.toLowerCase().includes(searchQuery.toLowerCase())
+    )
+    .sort((a, b) => {
+      if (sortOrder === "lowToHigh") {
+        return a.price - b.price;
+      } else if (sortOrder === "highToLow") {
+        return b.price - a.price;
+      }
+      return 0;
+    });
+
   return (
     <div className="product-grid">
       <h2 className="title">Shop the Collection</h2>
+
+      {/* Filter Section */}
+      <div className="filter-section">
+        {/* Search Input with Icon */}
+        <div className="search-input-container">
+          <i className="fas fa-search search-icon"></i>
+          <input
+            type="text"
+            placeholder="Search by product name..."
+            value={searchQuery}
+            onChange={handleSearchChange}
+            className="search-input"
+          />
+        </div>
+
+        {/* Custom Sort Dropdown with Icons */}
+        <div className="sort-dropdown-container">
+          <div
+            className="sort-dropdown-selected"
+            onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+          >
+            <span>
+              {sortOrder === "lowToHigh" ? (
+                <>Low to High Price</>
+              ) : (
+                <>High to Low Price</>
+              )}
+            </span>
+            <i className={`fas fa-chevron-${isDropdownOpen ? "up" : "down"}`} />
+          </div>
+
+          {isDropdownOpen && (
+            <div className="sort-dropdown-options">
+              <div
+                className="sort-dropdown-option"
+                onClick={() => handleSortChange("lowToHigh")}
+              >
+                Low to High Price
+              </div>
+              <div
+                className="sort-dropdown-option"
+                onClick={() => handleSortChange("highToLow")}
+              >
+                High to Low Price
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* Product Items */}
       <motion.div
         className="product-grid__items"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
-        {products.slice(0, 20).map((product) => {
+        {filteredProducts.slice(0, 20).map((product) => {
           const discountedPrice =
             product.price - (product.price * product.discount) / 100;
+
           return (
             <Link
               to={`/product/${product.id}`}
