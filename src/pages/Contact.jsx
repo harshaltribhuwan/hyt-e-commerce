@@ -41,6 +41,11 @@ export default function Contact() {
           <p>
             <strong>Address:</strong> 123 Fashion St, Delhi, India
           </p>
+
+          <p>
+            <strong>Facebook</strong>, <strong>Instagram</strong>,
+            <strong>Twitter</strong>,<strong>Youtube :</strong>{" "}HYT Inc.
+          </p>
         </motion.div>
       </div>
     </motion.div>
