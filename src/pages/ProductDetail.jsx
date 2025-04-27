@@ -1,8 +1,9 @@
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { products } from "../data/products";
 import { useDispatch } from "react-redux";
-import { useState } from "react";
 import { addToCart } from "../store/cartSlice";
+import { toast } from "react-hot-toast";
 import "./ProductDetail.scss";
 
 export default function ProductDetail() {
@@ -27,6 +28,8 @@ export default function ProductDetail() {
       return;
     }
 
+    const loadingToast = toast.loading("Adding to cart...");
+
     const newCartItem = { ...product, selectedSize, quantity };
 
     dispatch(addToCart(newCartItem));
@@ -34,7 +37,19 @@ export default function ProductDetail() {
     const existingCart = JSON.parse(localStorage.getItem("cart")) || [];
     const updatedCart = [...existingCart, newCartItem];
     localStorage.setItem("cart", JSON.stringify(updatedCart));
+
+    setTimeout(() => {
+      toast.success(`${product.name} added to cart!`, {
+        id: loadingToast,
+      });
+    }, 500); // fake slight delay for smoothness
   };
+
+  useEffect(() => {
+    if (product.sizes.length > 0) {
+      setSelectedSize(product.sizes[0]); // Set default size to the first size
+    }
+  }, [product.sizes]);
 
   return (
     <div className="product-detail">
