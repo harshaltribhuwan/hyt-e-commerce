@@ -16,3 +16,19 @@ body,
 .app-container>*:not(:last-child) {
     flex: 1;
 }
+
+// Remove focus outline and tap highlight everywhere
+* {
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-focus-ring-color: rgba(0, 0, 0, 0); // Extra Safari support
+}
+
+// Also for better consistency, if you want, you can target focus-visible separately
+*:focus {
+    outline: none;
+}
+
+*:focus-visible {
+    outline: none;
+}

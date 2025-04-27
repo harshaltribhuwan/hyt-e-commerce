@@ -52,15 +52,17 @@
             cursor: pointer;
             text-transform: uppercase;
             letter-spacing: 1px;
-            transition: all 0.4s ease;
+            transition: background-color 0.4s ease, color 0.4s ease, border 0.4s ease;
             width: fit-content;
             position: relative;
             overflow: hidden;
 
 
             &:hover {
-                color: #111;
-                background-color: #fafafa;
+                background: transparent;
+                color: #fff;
+                border: 1px solid #fff;
+                border-radius: 6px;
             }
 
             span {
