@@ -32,7 +32,7 @@ export default function ProductGrid() {
 
   const handleSortChange = (order) => {
     setSortOrder(order);
-    setIsDropdownOpen(false); // Close the dropdown after selection
+    setIsDropdownOpen(false);
   };
 
   const handleSearchChange = (event) => {
@@ -49,12 +49,11 @@ export default function ProductGrid() {
       } else if (sortOrder === "highToLow") {
         return b.price - a.price;
       }
-      return 0; // No sorting if sortOrder is null
+      return 0;
     });
 
   return (
     <div className="product-grid">
-
       <div className="filter-section">
         <div className="search-input-container">
           <i className="fas fa-search search-icon"></i>
@@ -78,7 +77,7 @@ export default function ProductGrid() {
               ) : sortOrder === "highToLow" ? (
                 <>High to Low Price</>
               ) : (
-                <>Sort by Price</> // Default text when no sort is selected
+                <>Sort by Price</>
               )}
             </span>
             <i className={`fas fa-chevron-${isDropdownOpen ? "up" : "down"}`} />
