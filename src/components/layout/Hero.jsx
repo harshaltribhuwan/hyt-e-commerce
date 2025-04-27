@@ -14,7 +14,7 @@ export default function Hero() {
         <h1>Elevate Your Style</h1>
         <p>Discover premium quality clothing for the modern lifestyle</p>
         <Link to="/shop" className="btn">
-          Shop Now
+          <span>Shop Now</span>
         </Link>
       </motion.div>
     </div>

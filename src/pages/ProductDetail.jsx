@@ -102,7 +102,7 @@ export default function ProductDetail() {
           onClick={handleAddToCart}
           disabled={product.stock === 0}
         >
-          {product.stock === 0 ? "Out of Stock" : "Add to Cart"}
+          <span>{product.stock === 0 ? "Out of Stock" : "Add to Cart"}</span>
         </button>
       </div>
     </div>
