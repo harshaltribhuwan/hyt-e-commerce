@@ -100,7 +100,3 @@ Once deployed, you can access the site at:
 ## Contributing
 
 We welcome contributions! If you have any improvements or bug fixes, feel free to fork the repository, make your changes, and create a pull request.
-
-## License
-
-This project is open-source and available under the [MIT License](LICENSE).
