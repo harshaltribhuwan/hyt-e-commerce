@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion"; // Added AnimatePresenc
 import { Link } from "react-router-dom";
 import { products } from "../../data/products";
 import "./ProductGrid.scss";
+import useDebounce from "../common/useDebounce";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -29,6 +30,7 @@ export default function ProductGrid() {
   const [searchQuery, setSearchQuery] = useState("");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [showFilters, setShowFilters] = useState(false); // NEW
+  const debouncedSearchQuery = useDebounce(searchQuery, 400);
 
   const handleSortChange = (order) => {
     setSortOrder(order);
@@ -39,18 +41,19 @@ export default function ProductGrid() {
     setSearchQuery(event.target.value);
   };
 
-  const filteredProducts = products
-    .filter((product) =>
-      product.name.toLowerCase().includes(searchQuery.toLowerCase())
-    )
-    .sort((a, b) => {
-      if (sortOrder === "lowToHigh") {
-        return a.price - b.price;
-      } else if (sortOrder === "highToLow") {
-        return b.price - a.price;
-      }
-      return 0;
-    });
+const filteredProducts = products
+  .filter((product) =>
+    product.name.toLowerCase().includes(debouncedSearchQuery.toLowerCase())
+  )
+  .sort((a, b) => {
+    if (sortOrder === "lowToHigh") {
+      return a.price - b.price;
+    } else if (sortOrder === "highToLow") {
+      return b.price - a.price;
+    }
+    return 0;
+  });
+
 
   return (
     <div className="product-grid">
