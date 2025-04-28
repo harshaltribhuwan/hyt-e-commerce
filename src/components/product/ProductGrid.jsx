@@ -9,7 +9,7 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.08,
+      staggerChildren: 0.04, // Smaller stagger for smoother look
       delayChildren: 0.1,
       ease: "easeOut",
     },
@@ -17,12 +17,10 @@ const containerVariants = {
 };
 
 const cardVariants = {
-  hidden: { opacity: 0, y: 30, scale: 0.95 },
+  hidden: { opacity: 0 }, // only fade, no scale
   visible: {
     opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: { type: "spring", stiffness: 200, damping: 20 },
+    transition: { duration: 0.4, ease: "easeOut" },
   },
 };
 
@@ -148,8 +146,8 @@ export default function ProductGrid() {
                 <motion.div
                   className="product-card"
                   variants={cardVariants}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.97 }}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
                 >
                   <img src={product.image} alt={product.name} />
                   <h3>{product.name}</h3>
