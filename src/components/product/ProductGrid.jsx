@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion"; // Added AnimatePresence
 import { Link } from "react-router-dom";
 import { products } from "../../data/products";
 import "./ProductGrid.scss";
@@ -9,29 +9,28 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.08, // faster stagger between cards (was 0.15)
-      delayChildren: 0.1, // less delay before children animate (was 0.2)
+      staggerChildren: 0.08,
+      delayChildren: 0.1,
       ease: "easeOut",
     },
   },
 };
 
 const cardVariants = {
-  hidden: { opacity: 0, y: 30, scale: 0.95 }, // slightly smaller Y movement
+  hidden: { opacity: 0, y: 30, scale: 0.95 },
   visible: {
     opacity: 1,
     y: 0,
     scale: 1,
     transition: { type: "spring", stiffness: 200, damping: 20 },
-    // springier, quicker
   },
 };
 
-
 export default function ProductGrid() {
-  const [sortOrder, setSortOrder] = useState(null); // Start with null (no sort)
+  const [sortOrder, setSortOrder] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [showFilters, setShowFilters] = useState(false); // NEW
 
   const handleSortChange = (order) => {
     setSortOrder(order);
@@ -57,53 +56,72 @@ export default function ProductGrid() {
 
   return (
     <div className="product-grid">
-      <div className="filter-section">
-        <div className="search-input-container">
-          <i className="fas fa-search search-icon"></i>
-          <input
-            type="text"
-            placeholder="Search by product name..."
-            value={searchQuery}
-            onChange={handleSearchChange}
-            className="search-input"
-          />
-        </div>
+      <button
+        className="filter-toggle-btn"
+        onClick={() => setShowFilters(!showFilters)}
+      >
+        {showFilters ? "Hide Filters" : "Show Filters"}
+      </button>
 
-        <div className="sort-dropdown-container">
-          <div
-            className="sort-dropdown-selected"
-            onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+      <AnimatePresence>
+        {showFilters && (
+          <motion.div
+            className="filter-section"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.4 }}
           >
-            <span>
-              {sortOrder === "lowToHigh" ? (
-                <>Low to High Price</>
-              ) : sortOrder === "highToLow" ? (
-                <>High to Low Price</>
-              ) : (
-                <>Sort by Price</>
-              )}
-            </span>
-            <i className={`fas fa-chevron-${isDropdownOpen ? "up" : "down"}`} />
-          </div>
-
-          {isDropdownOpen && (
-            <div className="sort-dropdown-options">
-              <div
-                className="sort-dropdown-option"
-                onClick={() => handleSortChange("lowToHigh")}
-              >
-                Low to High Price
-              </div>
-              <div
-                className="sort-dropdown-option"
-                onClick={() => handleSortChange("highToLow")}
-              >
-                High to Low Price
-              </div>
+            <div className="search-input-container">
+              <i className="fas fa-search search-icon"></i>
+              <input
+                type="text"
+                placeholder="Search by product name..."
+                value={searchQuery}
+                onChange={handleSearchChange}
+                className="search-input"
+              />
             </div>
-          )}
-        </div>
-      </div>
+
+            <div className="sort-dropdown-container">
+              <div
+                className="sort-dropdown-selected"
+                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+              >
+                <span>
+                  {sortOrder === "lowToHigh" ? (
+                    <>Low to High Price</>
+                  ) : sortOrder === "highToLow" ? (
+                    <>High to Low Price</>
+                  ) : (
+                    <>Sort by Price</>
+                  )}
+                </span>
+                <i
+                  className={`fas fa-chevron-${isDropdownOpen ? "up" : "down"}`}
+                />
+              </div>
+
+              {isDropdownOpen && (
+                <div className="sort-dropdown-options">
+                  <div
+                    className="sort-dropdown-option"
+                    onClick={() => handleSortChange("lowToHigh")}
+                  >
+                    Low to High Price
+                  </div>
+                  <div
+                    className="sort-dropdown-option"
+                    onClick={() => handleSortChange("highToLow")}
+                  >
+                    High to Low Price
+                  </div>
+                </div>
+              )}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {filteredProducts.length === 0 && searchQuery && (
         <p className="no-results-message">No results found</p>
@@ -112,7 +130,7 @@ export default function ProductGrid() {
       {filteredProducts.length > 0 && (
         <motion.div
           className="product-grid__items"
-          key={searchQuery + sortOrder} // key added here to re-trigger animation
+          key={searchQuery + sortOrder}
           variants={containerVariants}
           initial="hidden"
           animate="visible"
