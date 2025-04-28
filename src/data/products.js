@@ -25,7 +25,7 @@ export const products = [
     {
         id: 3,
         discount: 30, // 10% off
-        stock: 25,
+        stock: 4,
         sizes: ["S", "M", "L"],
         description: "A luxury shirt, luxury shirt perfect for cool parties.",
         name: "Blackout Classic Tee",
@@ -36,7 +36,7 @@ export const products = [
     {
         id: 4,
         discount: 3, // 10% off
-        stock: 15,
+        stock: 6,
         sizes: ["S"],
         description: "A stylish shirt, stylist shirt perfect for dinner.",
         name: "Dark Knight Graphic",
@@ -47,7 +47,7 @@ export const products = [
     {
         id: 5,
         discount: 42, // 10% off
-        stock: 33,
+        stock: 8,
         sizes: ["S", "M", "L", "XL"],
         description: "A cool, casual shirt perfect for summer days.",
         name: "Stealth Print Tee",
@@ -58,7 +58,7 @@ export const products = [
     {
         id: 6,
         discount: 10, // 10% off
-        stock: 16,
+        stock: 7,
         sizes: ["S", "M", "L", "XL"],
         description: "A cool, modern shirts perfect for summer days.",
         name: "Noir Minimalist Tee",
@@ -69,7 +69,7 @@ export const products = [
     {
         id: 7,
         discount: 20, // 10% off
-        stock: 65,
+        stock: 6,
         sizes: ["S", "L", "XL"],
         description: "A long cozy shirt, long shirt perfect for cozy days.",
         name: "Urban Echo Black Tee",
@@ -80,7 +80,7 @@ export const products = [
     {
         id: 8,
         discount: 31, // 10% off
-        stock: 25,
+        stock: 5,
         sizes: ["S", "M", "XL"],
         description: "A dope shirt, dope shirt perfect for winter days.",
         name: "Phantom Emblem tee",
@@ -91,7 +91,7 @@ export const products = [
     {
         id: 9,
         discount: 14, // 10% off
-        stock: 5,
+        stock: 3,
         sizes: ["S", "M", ],
         description: "A cool, funky shirt perfect for summer days.",
         name: "Eclipse Line Tee",
@@ -102,7 +102,7 @@ export const products = [
     {
         id: 10,
         discount: 10, // 10% off
-        stock: 15,
+        stock: 1,
         sizes: ["L", "XL"],
         description: "A baggy shirt, baggy shirt perfect for rainy days.",
         name: "Obsidian Graphic tee",
